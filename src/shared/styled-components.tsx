@@ -12,6 +12,6 @@ export const BackgroundImage = styled.div<{ $imageUrl: string; }>`
   height: 50vh;
   background-image: url(${props => props.$imageUrl || 'https://images.pexels.com/photos/5480787/pexels-photo-5480787.jpeg'});
   background-position-y: center;
-  background-position-x: center;
+  background-position-x: center !important;
   background-size: cover;
 `

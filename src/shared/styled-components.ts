@@ -22,6 +22,10 @@ export const CarouselImage = styled.img`
   height: auto;
   max-height: 400px;
   object-fit: cover;
+  cursor: pointer;
+  &:hover {
+    filter: brightness(0.5);
+  }
   @media ${device.mobileS} and (max-width: 1024px) {
     height: auto;
     max-height: 230px;

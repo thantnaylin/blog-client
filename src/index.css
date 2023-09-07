@@ -15,8 +15,8 @@ p {
   font-size: 18px;
 }
 
-.top-25 {
-  top: 25%;
+.top-40 {
+  top: 40%;
 }
 
 .left-0 {
@@ -35,6 +35,14 @@ code {
 .brand-text {
   font-weight: 500;
   font-size: 24px;
+}
+
+.scroll-icon-container {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  color: #FFFFFF;
+  text-align: center;
 }
 
 #introduction p,

@@ -1,7 +1,7 @@
 import React from "react";
-import { ParagraphProps } from "./interfaces";
+import { IParagraphProps } from "./interfaces";
 
-export const Paragraph: React.FC<ParagraphProps> = props => {
+export const Paragraph: React.FC<IParagraphProps> = props => {
   return (
     <>
       {props.title && <h1>{props.title}</h1>}

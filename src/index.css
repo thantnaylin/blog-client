@@ -12,7 +12,19 @@ button {
 }
 
 p {
-  font-size: 18px;
+  font-size: 22px;
+}
+
+h1 {
+  font-size: 40px;
+}
+
+h2 {
+  font-size: 32px;
+}
+
+h3 {
+  font-size: 28px;
 }
 
 .top-40 {
@@ -44,6 +56,44 @@ code {
   color: #FFFFFF;
   text-align: center;
 }
+
+.carousel {
+  width:900px;
+  height:400px;
+  margin: auto;
+}
+
+@media (max-width: 900px) {
+  .carousel {
+    width:auto;
+    height:auto;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .w-100-md-50 {
+    width: 50%;
+  }
+}
+
+@media only screen and (max-width: 767.9px) {
+  .w-100-md-50 {
+    width: 100%;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .w-100-md-auto {
+    width: auto;
+  }
+}
+
+@media only screen and (max-width: 767.9px) {
+  .w-100-md-auto {
+    width: 100%;
+  }
+}
+
 
 #introduction p,
 h1 {

@@ -8,14 +8,13 @@ import { CreatePostScreen } from "./components/screens/CreatePostScreen";
 import { AboutScreen } from "./components/screens/AboutScreen";
 import { ManagePostScreen } from "./components/screens/ManagePostScreen";
 import { PreviewPostScreen } from "./components/screens/PreviewPostScreen";
-import { HomeScreen } from "./components/screens/HomeScreen";
 import Header from "./components/layouts/Header";
 
 function App() {
   return (
     <BrowserRouter>
       <Header />
-      <main className="py-3">
+      <main className="py-5 mb-5">
         <Container>
           <Routes>
             <Route path="/login" Component={LoginScreen} />
@@ -25,6 +24,7 @@ function App() {
             <Route path="/stories/edit/:id" Component={ManagePostScreen} />
             <Route path="/stories/preview/:id" Component={PreviewPostScreen} />
             <Route path="/" Component={PostsScreen} />
+            <Route path="*" Component={PostsScreen} />
           </Routes>
         </Container>
       </main>

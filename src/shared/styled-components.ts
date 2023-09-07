@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Navbar } from "react-bootstrap";
+import { device } from "./screen-sizes";
 
 export const NavBrand = styled(Navbar.Brand)`
   font-size: 2rem;
@@ -13,6 +14,16 @@ export const BackgroundImage = styled.div<{ $imageUrl: string }>`
   background-image: url(${props =>
     props.$imageUrl || `${process.env.PUBLIC_URL}/assets/banner-image.jpg`});
   background-position-y: center;
-  background-position-x: left;
+  background-position-x: center;
   background-size: cover;
+`;
+
+export const CarouselImage = styled.img`
+  height: auto;
+  max-height: 400px;
+  object-fit: cover;
+  @media ${device.mobileS} and (max-width: 1024px) {
+    height: auto;
+    max-height: 230px;
+  }
 `;

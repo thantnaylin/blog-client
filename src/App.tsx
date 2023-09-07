@@ -1,14 +1,14 @@
-import React from 'react';
+import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import {Container} from "react-bootstrap";
+import { Container } from "react-bootstrap";
 
-import {LoginScreen} from "./components/screens/LoginScreen";
-import {PostsScreen} from "./components/screens/PostsScreen";
-import {CreatePostScreen} from "./components/screens/CreatePostScreen";
-import {AboutScreen} from "./components/screens/AboutScreen";
-import {ManagePostScreen} from "./components/screens/ManagePostScreen";
-import {PreviewPostScreen} from "./components/screens/PreviewPostScreen";
-import {HomeScreen} from "./components/screens/HomeScreen";
+import { LoginScreen } from "./components/screens/LoginScreen";
+import { PostsScreen } from "./components/screens/PostsScreen";
+import { CreatePostScreen } from "./components/screens/CreatePostScreen";
+import { AboutScreen } from "./components/screens/AboutScreen";
+import { ManagePostScreen } from "./components/screens/ManagePostScreen";
+import { PreviewPostScreen } from "./components/screens/PreviewPostScreen";
+import { HomeScreen } from "./components/screens/HomeScreen";
 import Header from "./components/layouts/Header";
 
 function App() {

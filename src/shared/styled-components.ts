@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {Navbar} from "react-bootstrap";
+import { Navbar } from "react-bootstrap";
 
 export const NavBrand = styled(Navbar.Brand)`
   font-size: 2rem;
@@ -7,11 +7,13 @@ export const NavBrand = styled(Navbar.Brand)`
   cursor: pointer;
 `;
 
-export const BackgroundImage = styled.div<{ $imageUrl: string; }>`
+export const BackgroundImage = styled.div<{ $imageUrl: string }>`
   width: 100%;
-  height: 50vh;
-  background-image: url(${props => props.$imageUrl || 'https://images.pexels.com/photos/5480787/pexels-photo-5480787.jpeg'});
+  height: 100vh;
+  background-image: url(${props =>
+    props.$imageUrl ||
+    "https://images.pexels.com/photos/5480787/pexels-photo-5480787.jpeg"});
   background-position-y: center;
   background-position-x: center !important;
   background-size: cover;
-`
+`;

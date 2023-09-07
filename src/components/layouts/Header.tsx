@@ -45,7 +45,10 @@ const Header = () => {
             </Navbar.Collapse>
           </Container>
         </Navbar>
-        <div className="position-absolute top-25 left-0 right-0">
+        <div
+          className="position-absolute top-25 left-0 right-0"
+          id="introduction"
+        >
           <Container>
             <Row>
               <Col className="col-12" md={3}></Col>

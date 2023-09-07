@@ -24,7 +24,7 @@ function App() {
             <Route path="/stories" Component={PostsScreen} />
             <Route path="/stories/edit/:id" Component={ManagePostScreen} />
             <Route path="/stories/preview/:id" Component={PreviewPostScreen} />
-            <Route path="/" Component={HomeScreen} />
+            <Route path="/" Component={PostsScreen} />
           </Routes>
         </Container>
       </main>

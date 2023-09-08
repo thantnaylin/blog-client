@@ -1,3 +1,5 @@
+import { StoryStatus } from "./enums";
+
 export interface IParagraphProps {
   title?: string;
   paragraphs: string[];
@@ -8,4 +10,5 @@ export interface IStory {
   title: string;
   storyImageUrl: string;
   excerpt: string;
+  status: StoryStatus;
 }

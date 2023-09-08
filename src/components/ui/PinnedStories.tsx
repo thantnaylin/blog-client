@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { IStory } from "../../shared/interfaces";
-import { StoryCarousel } from "../ui/StoryCarousel";
+import { StoryCarousel } from "./StoryCarousel";
 
-export const PostsScreen: React.FC = props => {
+export const PinnedStories: React.FC = () => {
   const [stories, setStories] = useState<IStory[]>([]);
 
   const mockUpStories: IStory[] = [
@@ -38,17 +38,16 @@ export const PostsScreen: React.FC = props => {
   ];
 
   useEffect(() => {
-    console.log("hook running");
-    // setTimeout(() => setStories(mockUpStories), 500);
     setStories(mockUpStories);
   }, []);
 
   return (
-    <>
-      <h1 className="text-center">Pinned Posts</h1>
+    <section className="py-5 mb-5" id="stories">
+      <h1 className="text-center">Recommended Stories</h1>
+      <p className="text-center">Top stories recommended by me.</p>
       <div className="py-5">
         <StoryCarousel stories={stories} />
       </div>
-    </>
+    </section>
   );
 };

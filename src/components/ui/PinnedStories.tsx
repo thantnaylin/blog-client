@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { IStory } from "../../shared/interfaces";
 import { StoryCarousel } from "./StoryCarousel";
+import { getPinnedStories } from "../../services/stories.service";
 
 export const PinnedStories: React.FC = () => {
   const [stories, setStories] = useState<IStory[]>([]);
@@ -38,7 +39,11 @@ export const PinnedStories: React.FC = () => {
   // ];
 
   useEffect(() => {
-    setStories([]);
+    const getStories = async () => {
+      const data = await getPinnedStories();
+      setStories(data);
+    };
+    getStories();
   }, []);
 
   return (

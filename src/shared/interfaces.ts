@@ -9,3 +9,8 @@ export interface IStory {
   storyImageUrl: string;
   excerpt: string;
 }
+
+export interface EnumMap {
+  EnumValue: number;
+  Text: string;
+}

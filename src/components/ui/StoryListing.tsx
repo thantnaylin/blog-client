@@ -1,9 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { IStory } from "../../shared/interfaces";
-import { Badge, Card, Col, Row } from "react-bootstrap";
+import { Card, Col, Row } from "react-bootstrap";
+import { StoryCategory } from "../../shared/enums";
+import { CategoryStack } from "./CategoryStack";
 
 export const StoryListing: React.FC = () => {
   const [stories, setStories] = useState<IStory[]>([]);
+  const [activeCategory, setActiveCategory] = useState<StoryCategory>(
+    StoryCategory.All
+  );
 
   const mockUpStories: IStory[] = [
     {
@@ -73,6 +78,15 @@ export const StoryListing: React.FC = () => {
     }
   ];
 
+  const categoryChangeHandler = (category: StoryCategory) => {
+    if (category === activeCategory) {
+      return;
+    }
+
+    console.log("new active category:", category);
+    setActiveCategory(category);
+  };
+
   useEffect(() => {
     setStories(mockUpStories);
   }, []);
@@ -80,6 +94,14 @@ export const StoryListing: React.FC = () => {
   return (
     <section className="pb-5 pt-0 mb-5">
       <h1 className="text-center text-warning">Latest Stories</h1>
+
+      <div className="py-3">
+        <CategoryStack
+          activeCategory={activeCategory}
+          onClick={categoryChangeHandler}
+        />
+      </div>
+
       <Row className="mt-5">
         {stories.map(story => (
           <Col

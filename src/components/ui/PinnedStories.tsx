@@ -42,8 +42,8 @@ export const PinnedStories: React.FC = () => {
   }, []);
 
   return (
-    <section className="py-5 mb-5" id="stories">
-      <h1 className="text-center">Recommended Stories</h1>
+    <section className="py-5" id="stories">
+      <h1 className="text-center text-warning">Recommended Stories</h1>
       <p className="text-center">Top stories recommended by me.</p>
       <div className="py-5">
         <StoryCarousel stories={stories} />

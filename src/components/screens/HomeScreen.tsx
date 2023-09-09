@@ -4,6 +4,7 @@ import { PinnedStories } from "../ui/PinnedStories";
 import { Container } from "react-bootstrap";
 import { About } from "../ui/About";
 import { FaCircleChevronUp } from "react-icons/fa6";
+import { StoryListing } from "../ui/StoryListing";
 
 export const HomeScreen: React.FC = () => {
   const backToTopBtnStyle: any = {
@@ -29,7 +30,8 @@ export const HomeScreen: React.FC = () => {
       <main className="py-5 mb-5">
         <Container>
           <PinnedStories />
-          <About />
+          <StoryListing />
+          {/*<About />*/}
         </Container>
       </main>
       <FaCircleChevronUp

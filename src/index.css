@@ -63,6 +63,33 @@ code {
   margin: auto;
 }
 
+.text-warning {
+  color: #e8b201ff;
+}
+
+.card-title, .card-text {
+  color: #454545 !important;
+}
+
+.card-title:hover {
+  color: #e8b201ff !important;
+}
+
+.card-img-top {
+  height: 200px;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.text-small {
+  font-size: 14px !important;
+}
+
+
 @media (max-width: 900px) {
   .carousel {
     width:auto;

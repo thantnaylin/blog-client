@@ -26,22 +26,19 @@ const Header = () => {
               className="justify-content-end"
             >
               <Nav className="ml-auto">
-                <LinkContainer to="/stories">
-                  <Nav.Link>
-                    <div className="d-flex align-items-center justify-content-lg-between">
-                      <PiArticleNyTimesFill />
-                      <div className="ps-2">STORIES</div>
-                    </div>
-                  </Nav.Link>
-                </LinkContainer>
-                <LinkContainer to="/about">
-                  <Nav.Link>
-                    <div className="d-flex align-items-center justify-contentht-lg-between">
-                      <RiContactsLine />
-                      <div className="ps-2">ABOUT ME</div>
-                    </div>
-                  </Nav.Link>
-                </LinkContainer>
+                <Nav.Link href="#stories">
+                  <div className="d-flex align-items-center justify-content-lg-between">
+                    <PiArticleNyTimesFill />
+                    <div className="ps-2">STORIES</div>
+                  </div>
+                </Nav.Link>
+
+                <Nav.Link href="#about">
+                  <div className="d-flex align-items-center justify-contentht-lg-between">
+                    <RiContactsLine />
+                    <div className="ps-2">ABOUT ME</div>
+                  </div>
+                </Nav.Link>
               </Nav>
             </Navbar.Collapse>
           </Container>

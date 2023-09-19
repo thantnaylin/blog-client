@@ -30,22 +30,6 @@ export const CategoryStack: React.FC<CategoryStackProps> = ({
           </Badge>
         ))}
       </Stack>
-
-      {/*<div className="d-block d-md-none">*/}
-      {/*  <Form.Select*/}
-      {/*    aria-label="Categories"*/}
-      {/*    defaultValue={activeCategory}*/}
-      {/*    onChange={e =>*/}
-      {/*      onClick((e.currentTarget.value as unknown) as StoryCategory)*/}
-      {/*    }*/}
-      {/*  >*/}
-      {/*    {StoryCategoryMap.map(x => (*/}
-      {/*      <option key={x.EnumValue} value={x.EnumValue}>*/}
-      {/*        {x.Text}*/}
-      {/*      </option>*/}
-      {/*    ))}*/}
-      {/*  </Form.Select>*/}
-      {/*</div>*/}
     </>
   );
 };

@@ -3,6 +3,8 @@ import { IStory } from "../../shared/interfaces";
 import { Card, Col, Row } from "react-bootstrap";
 import { StoryCategory } from "../../shared/enums";
 import { CategoryStack } from "./CategoryStack";
+import axios from "axios";
+import { ICategoryResult } from "../../services/category.interfaces";
 
 export const StoryListing: React.FC = () => {
   const [stories, setStories] = useState<IStory[]>([]);
@@ -82,13 +84,24 @@ export const StoryListing: React.FC = () => {
     if (category === activeCategory) {
       return;
     }
-
-    console.log("new active category:", category);
     setActiveCategory(category);
   };
 
   useEffect(() => {
     setStories(mockUpStories);
+  }, []);
+
+  useEffect(() => {
+    const getCategories = async () => {
+      const res = await axios.get<ICategoryResult>(
+        "http://localhost:1337/api/categories"
+      );
+      const { data, meta } = res.data;
+      console.log(data, meta);
+    };
+    getCategories().then(() => {
+      console.log("done");
+    });
   }, []);
 
   return (

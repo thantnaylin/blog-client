@@ -16,7 +16,7 @@ export interface IPagination {
 
 export interface ICategoryDetails {
   id: number;
-  attribute: ICategoryAttribute;
+  attributes: ICategoryAttribute;
 }
 
 export interface ICategoryAttribute {

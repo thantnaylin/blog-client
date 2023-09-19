@@ -1,15 +1,26 @@
 import React, { useEffect, useState } from "react";
 import { IStory } from "../../shared/interfaces";
 import { Card, Col, Row } from "react-bootstrap";
-import { StoryCategory } from "../../shared/enums";
 import { CategoryStack } from "./CategoryStack";
-import axios from "axios";
-import { ICategoryResult } from "../../services/category.interfaces";
+import { ICategoryDetails } from "../../services/category.interfaces";
+import { getCategories } from "../../services/category.service";
+
+export const defaultActiveCategory: ICategoryDetails = {
+  id: 0,
+  attributes: {
+    category_name: "All",
+    createdAt: "",
+    publishedAt: "",
+    updatedAt: ""
+  }
+};
 
 export const StoryListing: React.FC = () => {
   const [stories, setStories] = useState<IStory[]>([]);
-  const [activeCategory, setActiveCategory] = useState<StoryCategory>(
-    StoryCategory.All
+  const [isCategoryLoading, setIsCategoryLoading] = useState<boolean>(false);
+  const [categories, setCategories] = useState<ICategoryDetails[]>([]);
+  const [activeCategory, setActiveCategory] = useState<ICategoryDetails>(
+    defaultActiveCategory
   );
 
   const mockUpStories: IStory[] = [
@@ -80,8 +91,8 @@ export const StoryListing: React.FC = () => {
     }
   ];
 
-  const categoryChangeHandler = (category: StoryCategory) => {
-    if (category === activeCategory) {
+  const categoryChangeHandler = (category: ICategoryDetails) => {
+    if (category.id === activeCategory.id) {
       return;
     }
     setActiveCategory(category);
@@ -92,15 +103,13 @@ export const StoryListing: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    const getCategories = async () => {
-      const res = await axios.get<ICategoryResult>(
-        "http://localhost:1337/api/categories"
-      );
-      const { data, meta } = res.data;
-      console.log(data, meta);
+    setIsCategoryLoading(true);
+    const fetchCategories = async () => {
+      const categoryResult = await getCategories();
+      setCategories(categoryResult.data);
     };
-    getCategories().then(() => {
-      console.log("done");
+    fetchCategories().then(() => {
+      setIsCategoryLoading(false);
     });
   }, []);
 
@@ -109,10 +118,15 @@ export const StoryListing: React.FC = () => {
       <h1 className="text-center text-warning">Latest Stories</h1>
 
       <div className="py-3">
-        <CategoryStack
-          activeCategory={activeCategory}
-          onClick={categoryChangeHandler}
-        />
+        {isCategoryLoading ? (
+          <p>Loading...</p>
+        ) : (
+          <CategoryStack
+            activeCategory={activeCategory}
+            categories={categories}
+            onClick={categoryChangeHandler}
+          />
+        )}
       </div>
 
       <Row className="mt-5">

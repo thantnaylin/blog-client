@@ -1,14 +1,18 @@
 import React from "react";
 import { StoryCategory, StoryCategoryMap } from "../../shared/enums";
 import { Badge, Dropdown, DropdownButton, Form, Stack } from "react-bootstrap";
+import { ICategoryDetails } from "../../services/category.interfaces";
+import { defaultActiveCategory } from "./StoryListing";
 
 export type CategoryStackProps = {
-  activeCategory: StoryCategory;
-  onClick: (category: StoryCategory) => void;
+  activeCategory: ICategoryDetails;
+  categories: ICategoryDetails[];
+  onClick: (category: ICategoryDetails) => void;
 };
 
 export const CategoryStack: React.FC<CategoryStackProps> = ({
   activeCategory,
+  categories,
   onClick
 }) => {
   return (
@@ -19,14 +23,26 @@ export const CategoryStack: React.FC<CategoryStackProps> = ({
         gap={2}
         className="flex-wrap flex-md-wrap-reverse"
       >
-        {StoryCategoryMap.map(x => (
+        {/*Default (ALL)*/}
+        <Badge
+          className="cursor-pointer"
+          bg={
+            defaultActiveCategory.id === activeCategory.id ? "dark" : "warning"
+          }
+          key={defaultActiveCategory.id}
+          onClick={() => onClick(defaultActiveCategory)}
+        >
+          {defaultActiveCategory.attributes.category_name}
+        </Badge>
+
+        {categories.map(x => (
           <Badge
             className="cursor-pointer"
-            bg={x.EnumValue === activeCategory ? "dark" : "warning"}
-            key={x.EnumValue}
-            onClick={() => onClick(x.EnumValue)}
+            bg={x.id === activeCategory.id ? "dark" : "warning"}
+            key={x.id}
+            onClick={() => onClick(x)}
           >
-            {x.Text}
+            {x.attributes.category_name}
           </Badge>
         ))}
       </Stack>

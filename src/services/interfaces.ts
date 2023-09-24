@@ -41,6 +41,7 @@ export interface IStory {
   attributes: {
     title: string;
     excerpt: string;
+    createdAt: string;
     mainImage: IBannerImage;
     category: {
       data: ICategoryDetails;

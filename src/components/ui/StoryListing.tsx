@@ -2,7 +2,11 @@ import React, { useEffect, useState } from "react";
 import { Card, Col, Row } from "react-bootstrap";
 import { CategoryStack } from "./CategoryStack";
 import { ICategoryDetails, IStory } from "../../services/interfaces";
-import { getAllStories, getCategories } from "../../services/service";
+import {
+  getAllStories,
+  getCategories as getAllCategories
+} from "../../services/service";
+import { LoadingPlaceholderCard } from "../../shared/components/LoadingPlaceholderCard";
 
 export const defaultActiveCategory: ICategoryDetails = {
   id: 0,
@@ -23,6 +27,11 @@ export const StoryListing: React.FC = () => {
     defaultActiveCategory
   );
 
+  useEffect(() => {
+    getCategories();
+    getStories();
+  }, []);
+
   const categoryChangeHandler = (category: ICategoryDetails) => {
     if (category.id === activeCategory.id || isStoriesLoading) {
       return;
@@ -38,7 +47,18 @@ export const StoryListing: React.FC = () => {
     });
   };
 
-  useEffect(() => {
+  const getCategories = () => {
+    setIsCategoryLoading(true);
+    const fetchCategories = async () => {
+      const categoryResult = await getAllCategories();
+      setCategories(categoryResult.data);
+    };
+    fetchCategories().then(() => {
+      setIsCategoryLoading(false);
+    });
+  };
+
+  const getStories = () => {
     setIsStoriesLoading(true);
     const fetchStories = async () => {
       const res = await getAllStories(activeCategory.id);
@@ -47,18 +67,14 @@ export const StoryListing: React.FC = () => {
     fetchStories().then(() => {
       setIsStoriesLoading(false);
     });
-  }, []);
+  };
 
-  useEffect(() => {
-    setIsCategoryLoading(true);
-    const fetchCategories = async () => {
-      const categoryResult = await getCategories();
-      setCategories(categoryResult.data);
-    };
-    fetchCategories().then(() => {
-      setIsCategoryLoading(false);
-    });
-  }, []);
+  const formatDate = (dateString: string): string => {
+    if (!dateString) return "";
+
+    const date = new Date(dateString);
+    return `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
+  };
 
   return (
     <section className="pb-5 pt-0 mb-5">
@@ -77,39 +93,41 @@ export const StoryListing: React.FC = () => {
       </div>
 
       <Row className="mt-5">
-        {isStoriesLoading ? (
-          <p>Loading...</p>
-        ) : (
-          stories.map(story => (
-            <Col
-              key={story.id}
-              className="d-flex align-items-stretch col-12 col-md-4"
-            >
-              <Card className="mb-5 w-100">
-                <Card.Img
-                  variant="top"
-                  src={story.attributes.mainImage.data.attributes.url}
-                ></Card.Img>
-                <Card.Body>
-                  <Card.Title>
-                    <p className="cursor-pointer fw-bold">
-                      {story.attributes.title}
+        {isStoriesLoading
+          ? Array.from(Array(3).keys()).map(x => (
+              <LoadingPlaceholderCard key={x} />
+            ))
+          : stories.map(story => (
+              <Col
+                key={story.id}
+                className="d-flex align-items-stretch col-12 col-md-4"
+              >
+                <Card className="mb-5 w-100">
+                  <Card.Img
+                    variant="top"
+                    src={story.attributes.mainImage.data.attributes.url}
+                  ></Card.Img>
+                  <Card.Body>
+                    <Card.Title>
+                      <p className="cursor-pointer fw-bold">
+                        {story.attributes.title}
+                      </p>
+                    </Card.Title>
+                    <Card.Text>
+                      <span className="text-small fw-bold text-warning">
+                        {story.attributes.category.data.attributes.categoryName}
+                      </span>
+                      <small className="d-block">
+                        {story.attributes.excerpt}
+                      </small>
+                    </Card.Text>
+                    <p className="text-muted text-small">
+                      {formatDate(story.attributes.createdAt)}
                     </p>
-                  </Card.Title>
-                  <Card.Text>
-                    <span className="text-small fw-bold text-warning">
-                      {story.attributes.category.data.attributes.categoryName}
-                    </span>
-                    <small className="d-block">
-                      {story.attributes.excerpt}
-                    </small>
-                  </Card.Text>
-                  <p className="text-muted text-small">09/09/2023</p>
-                </Card.Body>
-              </Card>
-            </Col>
-          ))
-        )}
+                  </Card.Body>
+                </Card>
+              </Col>
+            ))}
       </Row>
     </section>
   );

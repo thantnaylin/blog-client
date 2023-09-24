@@ -2,13 +2,13 @@ import React, { useEffect, useState } from "react";
 import { IStory } from "../../shared/interfaces";
 import { Card, Col, Row } from "react-bootstrap";
 import { CategoryStack } from "./CategoryStack";
-import { ICategoryDetails } from "../../services/category.interfaces";
-import { getCategories } from "../../services/category.service";
+import { ICategoryDetails } from "../../services/interfaces";
+import { getCategories } from "../../services/service";
 
 export const defaultActiveCategory: ICategoryDetails = {
   id: 0,
   attributes: {
-    category_name: "All",
+    categoryName: "All",
     createdAt: "",
     publishedAt: "",
     updatedAt: ""

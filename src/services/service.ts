@@ -1,0 +1,21 @@
+import axios from "axios";
+import { ICategoryResult, IStoryResult } from "./interfaces";
+
+axios.defaults.baseURL = process.env.REACT_APP_API_URL;
+axios.defaults.headers.common = {
+  Authorization: `Bearer ${process.env.REACT_APP_STRAPI_API_KEY}`
+};
+
+export const getCategories = async (): Promise<ICategoryResult> => {
+  const res = await axios.get<ICategoryResult>("/api/categories");
+  const { data } = res;
+  return data;
+};
+
+export const getPinnedStories = async (): Promise<IStoryResult> => {
+  const res = await axios.get<IStoryResult>(
+    "/api/stories?fields[0]=title&fields[1]=excerpt&populate[mainImage][fields][0]=name&populate[mainImage][fields][1]=url&[filters][isPinned][$eq]=true&populate[category][fields][0]=categoryName"
+  );
+  const { data } = res;
+  return data;
+};

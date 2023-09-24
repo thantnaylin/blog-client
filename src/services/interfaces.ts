@@ -20,8 +20,33 @@ export interface ICategoryDetails {
 }
 
 export interface ICategoryAttribute {
-  category_name: string;
+  categoryName: string;
   createdAt: string;
   publishedAt: string;
   updatedAt: string;
+}
+
+export interface IBannerImage {
+  data: {
+    id: number;
+    attributes: {
+      name: string;
+      url: string;
+    };
+  };
+}
+
+export interface IStory {
+  id: number;
+  attributes: {
+    title: string;
+    excerpt: string;
+    mainImage: IBannerImage;
+    category: ICategoryDetails;
+  };
+}
+
+export interface IStoryResult {
+  data: Array<IStory>;
+  meta: IMeta;
 }

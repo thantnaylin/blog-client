@@ -1,7 +1,6 @@
 import React from "react";
-import { StoryCategory, StoryCategoryMap } from "../../shared/enums";
-import { Badge, Dropdown, DropdownButton, Form, Stack } from "react-bootstrap";
-import { ICategoryDetails } from "../../services/category.interfaces";
+import { Badge, Stack } from "react-bootstrap";
+import { ICategoryDetails } from "../../services/interfaces";
 import { defaultActiveCategory } from "./StoryListing";
 
 export type CategoryStackProps = {
@@ -17,7 +16,6 @@ export const CategoryStack: React.FC<CategoryStackProps> = ({
 }) => {
   return (
     <>
-      {/*className="d-none d-md-flex"*/}
       <Stack
         direction="horizontal"
         gap={2}
@@ -32,7 +30,7 @@ export const CategoryStack: React.FC<CategoryStackProps> = ({
           key={defaultActiveCategory.id}
           onClick={() => onClick(defaultActiveCategory)}
         >
-          {defaultActiveCategory.attributes.category_name}
+          {defaultActiveCategory.attributes.categoryName}
         </Badge>
 
         {categories.map(x => (
@@ -42,7 +40,7 @@ export const CategoryStack: React.FC<CategoryStackProps> = ({
             key={x.id}
             onClick={() => onClick(x)}
           >
-            {x.attributes.category_name}
+            {x.attributes.categoryName}
           </Badge>
         ))}
       </Stack>

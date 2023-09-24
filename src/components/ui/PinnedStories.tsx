@@ -12,7 +12,6 @@ export const PinnedStories: React.FC = () => {
     const fetchPinnedStories = async () => {
       const pinnedStories = await getPinnedStories();
       setStories(pinnedStories.data);
-      console.log(pinnedStories.data);
     };
 
     fetchPinnedStories().then(() => {

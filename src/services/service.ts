@@ -19,3 +19,18 @@ export const getPinnedStories = async (): Promise<IStoryResult> => {
   const { data } = res;
   return data;
 };
+
+export const getAllStories = async (
+  categoryId: number
+): Promise<IStoryResult> => {
+  let queryParam =
+    "?populate[mainImage][fields][0]=name&populate[category][fields][0]=categoryName&populate[mainImage][fields][1]=url&fields[0]=title&fields[1]=excerpt&fields[2]=createdAt&sort[0]=createdAt:desc";
+
+  if (categoryId > 0) {
+    queryParam += `&filters[category][id][$eq]=${categoryId}`;
+  }
+
+  const res = await axios.get<IStoryResult>(`/api/stories${queryParam}`);
+  const { data } = res;
+  return data;
+};

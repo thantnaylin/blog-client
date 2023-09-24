@@ -42,7 +42,9 @@ export interface IStory {
     title: string;
     excerpt: string;
     mainImage: IBannerImage;
-    category: ICategoryDetails;
+    category: {
+      data: ICategoryDetails;
+    };
   };
 }
 

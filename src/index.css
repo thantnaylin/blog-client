@@ -75,6 +75,17 @@ code {
   color: #e8b201ff !important;
 }
 
+.bannerImageContainer {
+  width: 100%;
+}
+
+.bannerImageContainer img {
+  height: auto;
+  max-height: 500px;
+  object-fit: none;
+  width: 100%;
+}
+
 .card-img-top {
   height: 200px;
   object-fit: cover;
@@ -89,6 +100,22 @@ code {
   font-size: 14px !important;
 }
 
+.contentContainer {
+  width: 75%;
+  margin: auto;
+}
+
+.markdown-container p {
+  text-align: center;
+}
+
+p:has(img) {
+  text-align: center;
+}
+
+.markdown-container img {
+  width: 300px;
+}
 
 @media (max-width: 900px) {
   .carousel {
@@ -119,6 +146,12 @@ code {
   .w-100-md-auto {
     width: 100%;
   }
+
+  .markdown-container p {
+    font-size: 18px;
+    text-align: left;
+  }
+
 }
 
 

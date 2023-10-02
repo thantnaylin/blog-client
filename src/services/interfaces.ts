@@ -1,3 +1,5 @@
+import exp from "constants";
+
 export interface ICategoryResult {
   meta: IMeta;
   data: Array<ICategoryDetails>;
@@ -32,6 +34,7 @@ export interface IBannerImage {
     attributes: {
       name: string;
       url: string;
+      caption?: string;
     };
   };
 }
@@ -52,4 +55,30 @@ export interface IStory {
 export interface IStoryResult {
   data: Array<IStory>;
   meta: IMeta;
+}
+
+export interface IStoryDetailsAttributes {
+  title: string;
+  content: string;
+  isPinned: boolean;
+  excerpt: string;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+  mainImage: IBannerImage;
+  category: {
+    data: {
+      id: number;
+      attributes: {
+        categoryName: string;
+      };
+    };
+  };
+}
+
+export interface IStoryDetails {
+  data: {
+    id: number;
+    attributes: IStoryDetailsAttributes;
+  };
 }

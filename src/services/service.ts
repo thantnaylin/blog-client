@@ -1,5 +1,5 @@
 import axios from "axios";
-import { ICategoryResult, IStoryResult } from "./interfaces";
+import { ICategoryResult, IStoryDetails, IStoryResult } from "./interfaces";
 
 axios.defaults.baseURL = process.env.REACT_APP_API_URL;
 axios.defaults.headers.common = {
@@ -31,6 +31,16 @@ export const getAllStories = async (
   }
 
   const res = await axios.get<IStoryResult>(`/api/stories${queryParam}`);
+  const { data } = res;
+  return data;
+};
+
+export const getStoryById = async (
+  id: string | undefined
+): Promise<IStoryDetails> => {
+  const apiString = `/api/stories/${id}?populate[mainImage][fields][0]=name&populate[category][fields][0]=categoryName&populate[mainImage][fields][1]=url&populate[mainImage][fields][2]=caption`;
+
+  const res = await axios.get<IStoryDetails>(apiString);
   const { data } = res;
   return data;
 };

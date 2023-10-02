@@ -3,15 +3,20 @@ import { Carousel } from "react-bootstrap";
 import { CarouselImage } from "../../shared/styled-components";
 import { IStory } from "../../services/interfaces";
 
-type StoryCarouselProp = IStory[];
+// type StoryCarouselProp = IStory[];
+type StoryCarouselProp = {
+  stories: IStory[];
+  onClick: (storyId: number) => void;
+};
 
-export const StoryCarousel: React.FC<{ stories: StoryCarouselProp }> = ({
-  stories
+export const StoryCarousel: React.FC<StoryCarouselProp> = ({
+  stories,
+  onClick
 }) => {
   return (
     <Carousel interval={null} className="w-100-md-50 m-auto">
       {stories.map(story => (
-        <Carousel.Item key={story.id}>
+        <Carousel.Item key={story.id} onClick={() => onClick(story.id)}>
           <CarouselImage
             src={story.attributes.mainImage.data.attributes.url}
             className="w-100"

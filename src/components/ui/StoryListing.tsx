@@ -7,6 +7,7 @@ import {
   getCategories as getAllCategories
 } from "../../services/service";
 import { LoadingPlaceholderCard } from "../../shared/components/LoadingPlaceholderCard";
+import { useNavigate } from "react-router-dom";
 
 export const defaultActiveCategory: ICategoryDetails = {
   id: 0,
@@ -19,6 +20,7 @@ export const defaultActiveCategory: ICategoryDetails = {
 };
 
 export const StoryListing: React.FC = () => {
+  const navigate = useNavigate();
   const [stories, setStories] = useState<IStory[]>([]);
   const [isStoriesLoading, setIsStoriesLoading] = useState<boolean>(false);
   const [isCategoryLoading, setIsCategoryLoading] = useState<boolean>(false);
@@ -69,6 +71,11 @@ export const StoryListing: React.FC = () => {
     });
   };
 
+  const onStoryClick = (id: number) => {
+    const url = `/story/${id}`;
+    navigate(url);
+  };
+
   const formatDate = (dateString: string): string => {
     if (!dateString) return "";
 
@@ -109,7 +116,10 @@ export const StoryListing: React.FC = () => {
                   ></Card.Img>
                   <Card.Body>
                     <Card.Title>
-                      <p className="cursor-pointer fw-bold">
+                      <p
+                        className="cursor-pointer fw-bold"
+                        onClick={() => onStoryClick(story.id)}
+                      >
                         {story.attributes.title}
                       </p>
                     </Card.Title>

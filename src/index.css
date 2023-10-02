@@ -101,16 +101,20 @@ code {
 }
 
 .contentContainer {
-  width: 75%;
+  /*width: 75%;*/
   margin: auto;
 }
 
 .markdown-container p {
-  text-align: center;
+  /*text-align: center;*/
+}
+
+p:has(strong) {
+  text-align: center !important;
 }
 
 p:has(img) {
-  text-align: center;
+  text-align: center !important;
 }
 
 .markdown-container img {
@@ -128,31 +132,54 @@ p:has(img) {
   .w-100-md-50 {
     width: 50%;
   }
+
+  .w-100-md-auto {
+    width: auto;
+  }
+
+  .w-100-md-85 {
+    width: 85%;
+  }
+
 }
 
 @media only screen and (max-width: 767.9px) {
   .w-100-md-50 {
     width: 100%;
   }
-}
 
-@media only screen and (min-width: 768px) {
-  .w-100-md-auto {
-    width: auto;
-  }
-}
-
-@media only screen and (max-width: 767.9px) {
   .w-100-md-auto {
     width: 100%;
   }
+
+  .w-100-md-85 {
+    width: 100%;
+  }
+
 
   .markdown-container p {
     font-size: 18px;
     text-align: left;
   }
-
 }
+
+/*@media only screen and (min-width: 768px) {*/
+/*  .w-100-md-auto {*/
+/*    width: auto;*/
+/*  }*/
+/*}*/
+
+/*@media only screen and (max-width: 767.9px) {*/
+/*  .w-100-md-auto {*/
+/*    width: 100%;*/
+/*  }*/
+
+/*  .markdown-container p {*/
+/*    font-size: 18px;*/
+/*    text-align: left;*/
+/*  }*/
+
+/*}*/
 
 
 #introduction p,

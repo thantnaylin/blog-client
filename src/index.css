@@ -118,7 +118,7 @@ p:has(img) {
 }
 
 .markdown-container img {
-  width: 300px;
+  width: 100%;
 }
 
 @media (max-width: 900px) {
@@ -137,8 +137,8 @@ p:has(img) {
     width: auto;
   }
 
-  .w-100-md-85 {
-    width: 85%;
+  .w-100-md-65 {
+    width: 65%;
   }
 
 }
@@ -152,7 +152,7 @@ p:has(img) {
     width: 100%;
   }
 
-  .w-100-md-85 {
+  .w-100-md-65 {
     width: 100%;
   }
 

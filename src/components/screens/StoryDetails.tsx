@@ -26,15 +26,6 @@ export const StoryDetails: React.FC<{}> = props => {
     });
   }, []);
 
-  const navBarStyle = {
-    backgroundColor: "#e8b201"
-  };
-
-  const getImageUrl = (): string => {
-    const imageUrl = storyDetails?.mainImage?.data.attributes.url;
-    return imageUrl ? imageUrl : "";
-  };
-
   return (
     <>
       <Navbar expand="lg" bg="dark" data-bs-theme="dark">
@@ -51,12 +42,6 @@ export const StoryDetails: React.FC<{}> = props => {
         <p>Loading...</p>
       ) : (
         <div>
-          <div className="bannerImageContainer">
-            <img src={getImageUrl()} alt="" />
-            <small className="d-block text-center text-muted text-small mt-3">
-              {storyDetails?.mainImage?.data.attributes.caption}
-            </small>
-          </div>
           <div className="contentContainer mt-5 w-100-md-65">
             <h1 className="text-center">{storyDetails?.title}</h1>
 

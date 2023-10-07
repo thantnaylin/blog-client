@@ -115,6 +115,7 @@ p:has(em) {
 
 p:has(img) {
   text-align: center !important;
+  margin-bottom: 0;
 }
 
 .markdown-container img {
@@ -126,7 +127,7 @@ p:has(img) {
 }
 
 em {
-  font-size: 18px !important;
+  font-size: 14px !important;
   color: #555555;
 }
 
@@ -170,6 +171,11 @@ em {
     font-size: 18px;
     text-align: left;
   }
+}
+
+.story-details-title {
+  font-weight: bolder;
+  font-size: 1.6rem;
 }
 
 /*@media only screen and (min-width: 768px) {*/

@@ -43,7 +43,7 @@ export const StoryDetails: React.FC<{}> = props => {
       ) : (
         <div>
           <div className="contentContainer mt-5 w-100-md-65">
-            <h1 className="text-center">{storyDetails?.title}</h1>
+            <h1 className="text-center mb-0">{storyDetails?.title}</h1>
 
             <div className="px-1 px-md-5 markdown-container py-5">
               <Markdown>{storyDetails?.content}</Markdown>

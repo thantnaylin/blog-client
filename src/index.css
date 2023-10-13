@@ -132,6 +132,14 @@ em {
   /*color: #555555;*/
 }
 
+.personal-info {
+  min-width: 300px;
+}
+
+.text-yellow {
+  color: yellow;
+}
+
 @media (max-width: 900px) {
   .carousel {
     width:auto;
@@ -171,6 +179,11 @@ em {
     font-size: 18px;
     text-align: left;
   }
+
+  .profile-picture-container {
+    width: 300px !important;
+    height: 300px !important ;
+  }
 }
 
 .text-brown {
@@ -185,6 +198,17 @@ em {
 .story-details-title {
   font-weight: bolder;
   font-size: 1.8rem;
+}
+
+.about-me-container {
+  background-color: #e8b201ff;
+}
+
+.profile-picture-container {
+  width: 400px;
+  height: 400px;
+  background-image: url("../public/assets/jihye.jpeg");
+  background-size: cover;
 }
 
 /*@media only screen and (min-width: 768px) {*/

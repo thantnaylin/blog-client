@@ -71,6 +71,35 @@ export const StoryListing: React.FC = () => {
     });
   };
 
+  const getStoryCards = (loadedStories: IStory[]) =>
+    loadedStories.map(story => (
+      <Col
+        key={story.id}
+        className="d-flex align-items-stretch col-12 col-md-4"
+      >
+        <Card className="mb-5 w-100" onClick={() => onStoryClick(story.id)}>
+          <Card.Img
+            variant="top"
+            src={story.attributes.mainImage.data.attributes.url}
+          ></Card.Img>
+          <Card.Body>
+            <Card.Title>
+              <p className="cursor-pointer fw-bold">{story.attributes.title}</p>
+            </Card.Title>
+            <Card.Text>
+              <span className="text-small fw-bold text-warning">
+                {story.attributes.category.data.attributes.categoryName}
+              </span>
+              <small className="d-block">{story.attributes.excerpt}</small>
+            </Card.Text>
+            <p className="text-muted text-small">
+              {formatDate(story.attributes.createdAt)}
+            </p>
+          </Card.Body>
+        </Card>
+      </Col>
+    ));
+
   const onStoryClick = (id: number) => {
     const url = `/story/${id}`;
     navigate(url);
@@ -84,7 +113,7 @@ export const StoryListing: React.FC = () => {
   };
 
   return (
-    <section className="pb-5 pt-0 mb-5">
+    <section className="pb-3 pt-0 mb-2">
       <h1 className="text-center text-warning">Latest Stories</h1>
 
       <div className="py-3">
@@ -100,44 +129,15 @@ export const StoryListing: React.FC = () => {
       </div>
 
       <Row className="mt-5">
-        {isStoriesLoading
-          ? Array.from(Array(3).keys()).map(x => (
-              <LoadingPlaceholderCard key={x} />
-            ))
-          : stories.map(story => (
-              <Col
-                key={story.id}
-                className="d-flex align-items-stretch col-12 col-md-4"
-              >
-                <Card
-                  className="mb-5 w-100"
-                  onClick={() => onStoryClick(story.id)}
-                >
-                  <Card.Img
-                    variant="top"
-                    src={story.attributes.mainImage.data.attributes.url}
-                  ></Card.Img>
-                  <Card.Body>
-                    <Card.Title>
-                      <p className="cursor-pointer fw-bold">
-                        {story.attributes.title}
-                      </p>
-                    </Card.Title>
-                    <Card.Text>
-                      <span className="text-small fw-bold text-warning">
-                        {story.attributes.category.data.attributes.categoryName}
-                      </span>
-                      <small className="d-block">
-                        {story.attributes.excerpt}
-                      </small>
-                    </Card.Text>
-                    <p className="text-muted text-small">
-                      {formatDate(story.attributes.createdAt)}
-                    </p>
-                  </Card.Body>
-                </Card>
-              </Col>
-            ))}
+        {isStoriesLoading ? (
+          Array.from(Array(3).keys()).map(x => (
+            <LoadingPlaceholderCard key={x} />
+          ))
+        ) : stories.length === 0 ? (
+          <p>No story found.</p>
+        ) : (
+          getStoryCards(stories)
+        )}
       </Row>
     </section>
   );

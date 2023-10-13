@@ -31,9 +31,9 @@ export const HomeScreen: React.FC = () => {
         <Container>
           <PinnedStories />
           <StoryListing />
-          {/*<About />*/}
         </Container>
       </main>
+      <About />
       <FaCircleChevronUp
         style={backToTopBtnStyle}
         onClick={backToTopClickHandler}

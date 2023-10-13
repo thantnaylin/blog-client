@@ -111,6 +111,7 @@ code {
 
 p:has(em) {
   text-align: center !important;
+  color: #823f00 !important;
 }
 
 p:has(img) {
@@ -128,7 +129,7 @@ p:has(img) {
 
 em {
   font-size: 14px !important;
-  color: #555555;
+  /*color: #555555;*/
 }
 
 @media (max-width: 900px) {
@@ -166,16 +167,24 @@ em {
     width: 100%;
   }
 
-
   .markdown-container p {
     font-size: 18px;
     text-align: left;
   }
 }
 
+.text-brown {
+  color: #823f00 !important;
+}
+
+.excerpt {
+  font-size: 22px;
+  font-style: italic;
+}
+
 .story-details-title {
   font-weight: bolder;
-  font-size: 1.6rem;
+  font-size: 1.8rem;
 }
 
 /*@media only screen and (min-width: 768px) {*/

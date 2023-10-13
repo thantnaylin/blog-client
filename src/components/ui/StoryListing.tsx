@@ -109,17 +109,17 @@ export const StoryListing: React.FC = () => {
                 key={story.id}
                 className="d-flex align-items-stretch col-12 col-md-4"
               >
-                <Card className="mb-5 w-100">
+                <Card
+                  className="mb-5 w-100"
+                  onClick={() => onStoryClick(story.id)}
+                >
                   <Card.Img
                     variant="top"
                     src={story.attributes.mainImage.data.attributes.url}
                   ></Card.Img>
                   <Card.Body>
                     <Card.Title>
-                      <p
-                        className="cursor-pointer fw-bold"
-                        onClick={() => onStoryClick(story.id)}
-                      >
+                      <p className="cursor-pointer fw-bold">
                         {story.attributes.title}
                       </p>
                     </Card.Title>

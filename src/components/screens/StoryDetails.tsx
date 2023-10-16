@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Badge, Container, Navbar } from "react-bootstrap";
+import { Container, Navbar } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import { NavBrand } from "../../shared/styled-components";
 import { useParams } from "react-router-dom";
@@ -8,6 +8,7 @@ import { IStoryDetailsAttributes } from "../../services/interfaces";
 
 import "../../index.css";
 import Markdown from "react-markdown";
+import rehypeRaw from "rehype-raw";
 
 export const StoryDetails: React.FC<{}> = props => {
   let { id } = useParams();
@@ -52,7 +53,9 @@ export const StoryDetails: React.FC<{}> = props => {
                 <p className="excerpt">{`- ${storyDetails?.excerpt}`}</p>
               )}
 
-              <Markdown>{storyDetails?.content}</Markdown>
+              <Markdown rehypePlugins={[rehypeRaw]}>
+                {storyDetails?.content}
+              </Markdown>
             </div>
           </div>
         </div>

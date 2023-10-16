@@ -43,11 +43,11 @@ export const StoryDetails: React.FC<{}> = props => {
       ) : (
         <div>
           <div className="contentContainer mt-5 w-100-md-65">
-            <h1 className="text-center mb-0 story-details-title text-brown">
+            <h1 className="text-center mb-0 story-details-title">
               {storyDetails?.title}
             </h1>
 
-            <div className="px-1 px-md-5 markdown-container py-5 text-brown">
+            <div className="px-1 px-md-5 markdown-container py-5">
               {storyDetails?.excerpt && (
                 <p className="excerpt">{`- ${storyDetails?.excerpt}`}</p>
               )}

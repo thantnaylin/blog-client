@@ -59,5 +59,8 @@
     "gh-pages": "^6.0.0",
     "prettier": "^1.19.1",
     "prettier-airbnb-config": "^1.0.0"
+  },
+  "engines": {
+    "node": "^16.0.0 || >=18.0.0"
   }
 }

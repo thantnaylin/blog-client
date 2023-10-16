@@ -55,7 +55,7 @@ const Header = () => {
                   Hi, I'm <strong className="p-2 bg-black">Heo Jihye</strong>
                 </h1>
                 <p className="text-light mt-4 text-center">
-                  An enthusiastic product designer, based in Seoul, South Korea.
+                  Enjoy the articles I created below.
                 </p>
               </Col>
               <Col className="col-12" md={3}></Col>

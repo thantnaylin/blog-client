@@ -20,12 +20,14 @@ export const BackgroundImage = styled.div<{ $imageUrl: string }>`
 `;
 
 export const CarouselImage = styled.img`
-  height: auto;
-  max-height: 400px;
+  //height: auto;
+  //max-height: 400px;
+  height: 400px;
   object-fit: cover;
   cursor: pointer;
+  filter: brightness(0.5);
   &:hover {
-    filter: brightness(0.5);
+    filter: brightness(0.75);
   }
   @media ${device.mobileS} and (max-width: 1024px) {
     height: auto;

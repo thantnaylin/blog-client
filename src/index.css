@@ -191,8 +191,8 @@ em {
 }
 
 .excerpt {
-  font-size: 22px;
-  font-style: italic;
+  /*font-size: 22px;*/
+  font-weight: bolder;
 }
 
 .story-details-title {

@@ -51,7 +51,7 @@ export const About: React.FC = props => {
             </div>
             <div className="col-12 col-md-6 text-md-start text-center">
               <label className="fw-bold">
-                2022.02 건국대학교 현대미술학과 졸업 리빙디자인학과
+                2022.02 건국대학교 현대미술학과 졸업｜리빙디자인학과 부전공
               </label>
             </div>
           </div>
@@ -62,7 +62,7 @@ export const About: React.FC = props => {
             </div>
             <div className="col-12 col-md-6 text-md-start text-center">
               <label className="fw-bold">
-                2022.10 한국잡지협회 취재기자 양성과정 25기 수료
+                2023.10 한국잡지협회 취재기자 양성과정 25기 수료 예정
               </label>
             </div>
           </div>

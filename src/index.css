@@ -207,7 +207,7 @@ em {
 .profile-picture-container {
   width: 400px;
   height: 400px;
-  background-image: url("../public/assets/jihye.jpeg");
+  /*background-image: url("../public/assets/jihye.jpeg");*/
   background-size: cover;
 }
 
